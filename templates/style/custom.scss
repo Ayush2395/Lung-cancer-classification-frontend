@@ -1,0 +1,180 @@
+// functions
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}
+
+@function dark-color($color, $weight) {
+  @return mix(rgb(51, 51, 51), $color, $weight);
+}
+
+@import "../../node_modules/bootstrap/scss/functions";
+
+// colors
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$primary: tint-color($pink, 15%);
+$secondary: tint-color($indigo, 36%);
+$warning: dark-color($yellow, 50%);
+$dark: dark-color($indigo, 80%);
+$light: tint-color($pink, 40%);
+$danger: tint-color($red, 15%);
+$info: dark-color($purple, 20%);
+$success: dark-color($pink, 50%);
+$body-bg: tint-color($pink, 66%);
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "warning": $warning,
+  "dark": $dark,
+  "success": $success,
+  "info": $info,
+  "light": $light,
+  "danger": $danger,
+);
+
+$position-values: (
+  0: 0,
+  2: 2%,
+  10: 10%,
+  15: 15%,
+  25: 25%,
+  50: 50%,
+  65: 65%,
+  75: 75%,
+  85: 85%,
+  95: 95%,
+  100: 100%,
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/variables.scss";
+@import "../../node_modules/bootstrap/scss/mixins.scss";
+
+// global changes
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  width: 10px;
+  background-color: $body-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $pink;
+  border-radius: 10px;
+}
+
+.section {
+  min-height: 100vh;
+}
+
+.neo_btn {
+  height: auto;
+  width: auto;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.16),
+    -3px -3px 8px tint-color($pink, 75%);
+  background-color: $body-bg;
+}
+
+form .btn.neo_btn:hover {
+  height: auto;
+  width: auto;
+  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.16),
+    inset -3px -3px 8px tint-color($pink, 75%);
+  background-color: $body-bg;
+}
+
+.neo-btn-inner {
+  height: auto;
+  width: auto;
+  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.16),
+    inset -3px -3px 8px tint-color($pink, 75%);
+  background-color: $body-bg;
+}
+
+.btn:active,
+.btn:focus,
+.form-control:active
+// .form-control:focus {
+{
+  border: none;
+  outline: none;
+  box-sizing: none;
+  box-shadow: none;
+}
+
+.btn,
+.form-control {
+  border: none;
+}
+
+.btn:hover {
+  background-color: $body-bg;
+  outline: none;
+  border: none;
+}
+
+.up_btn {
+  transform: translateX(-200%);
+  transition: transform 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.show-up-btn {
+  transform: translateX(0);
+}
+
+// animation
+.circle {
+  height: 180px;
+  width: 180px;
+  background-color: $indigo;
+  border-radius: 50%;
+  left: 180px !important;
+  top: -90px;
+  animation: circle 2000ms cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.square {
+  height: 50px;
+  width: 50px;
+  border: 5px solid $secondary;
+  animation: square 5000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+}
+
+@keyframes circle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes square {
+  0%,
+  100% {
+    transform: rotate(-360deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lung Cancer Prediction</title>
+    <!-- <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    /> -->
+    <link rel="stylesheet" href="./style/custom.min.css" />
+  </head>
+  <body>
+    <!-- Home section -->
+    <section
+      class="section container d-flex justify-content-center align-items-center flex-column"
+    >
+      <div class="circle position-absolute"></div>
+
+      <h1 class="text-primary display-3">Lung Cancer Classification</h1>
+      <!-- <p class="text-light fw-semibold">
+        Emperical Analysis and Performance Evaluation
+      </p> -->
+      <p class="text-danger">Based on ML <i class="fa-solid fa-robot"></i></p>
+      <a
+        href="#prediction"
+        class="btn btn-primary neo_btn text-white rounded-circle position-relative top-100 mt-5"
+        ><i class="fa-solid fa-arrow-down fa-bounce"></i
+      ></a>
+      <div class="square position-absolute end-25 top-75"></div>
+    </section>
+
+    <!-- scroll to home section button -->
+    <a href="#" class="btn btn-secondary position-fixed start-2 bottom-2 up_btn"
+      ><i class="fa-solid fa-arrow-up"></i
+    ></a>
+
+    <!-- prediction section -->
+    <section class="section container m-auto mb-3" id="prediction">
+      <p class="display-2 w-100 text-center text-primary">Fill details</p>
+
+      <form
+        action="{{url_for('result')}}"
+        method="post"
+        class="neo_btn rounded p-3 w-75 m-auto"
+      >
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="gender" class="form-label text-primary">Gender</label>
+              <input
+                id="gender"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="1 for Male, 0 for Female"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="age" class="form-label text-primary">Age</label>
+              <input
+                id="age"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="Your age"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="smoking" class="form-label text-primary"
+                >Smoking</label
+              >
+              <input
+                id="smoking"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="fingers" class="form-label text-primary"
+                >Yellow Fingers</label
+              >
+              <input
+                id="fingers"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="anxiety" class="form-label text-primary"
+                >Anxiety</label
+              >
+              <input
+                id="anxiety"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="pressure" class="form-label text-primary"
+                >Peer Pressure</label
+              >
+              <input
+                id="pressure"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="fatigue" class="form-label text-primary"
+                >Fatigue</label
+              >
+              <input
+                id="fatigue"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="chronic" class="form-label text-primary"
+                >Chronic disease</label
+              >
+              <input
+                id="chronic"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="allergy" class="form-label text-primary"
+                >Allergy</label
+              >
+              <input
+                id="allergy"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="alcohol" class="form-label text-primary"
+                >Alcohal consuming</label
+              >
+              <input
+                id="alcohol"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="wheezing" class="form-label text-primary"
+                >Wheezing</label
+              >
+              <input
+                id="wheezing"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="coughing" class="form-label text-primary"
+                >Coughing</label
+              >
+              <input
+                id="coughing"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="form-group mb-3">
+              <label for="breathing" class="form-label text-primary"
+                >Shortness of breathing</label
+              >
+              <input
+                id="breathing"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="swallowing" class="form-label text-primary"
+                >Swallowing difficulty</label
+              >
+              <input
+                id="swallowing"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group mb-3">
+              <label for="pain" class="form-label text-primary"
+                >Chest pain</label
+              >
+              <input
+                id="pain"
+                type="text"
+                class="form-control neo-btn-inner rounded-pill w-100"
+                placeholder="2 for Yes, 1 for No"
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn text-dark my-3 neo_btn">
+          Predict &nbsp; <i class="fa-solid fa-calculator fa-fade"></i>
+        </button>
+      </form>
+    </section>
+    <footer class="bg-primary h-100 mt-5 pt-3 m-auto">
+      <div class="w-75 m-auto">
+        <div class="row mt-3">
+          <div class="col-xs-6 col-sm-6 mb-3">
+            <h4 class="fs-5 text-dark">Project Members</h4>
+            <span class="text-white fw-lighter">Leader: </span>
+            <span class="text-white">Jashandeep Kaur</span>
+            <br />
+            <span class="text-white fw-lighter">Member: </span>
+            <span class="text-white">Deepika Sharma</span>
+          </div>
+          <div class="col-xs-6 col-sm-6">
+            <h4 class="fs-5 text-dark">Contributors</h4>
+            <span class="text-white fw-lighter">Frontend: </span>
+            <span class="text-white">Ayush, Bhanu Partap</span>
+            <br />
+            <span class="text-white fw-lighter">UI design: </span>
+            <span class="text-white">Ayush</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 bg-dark mt-5 py-3">
+        <p class="w-100 text-white text-center">
+          &copy;2022, All rights are reserved.
+        </p>
+        <p class="text-center text-white w-100">
+          Designed by using &nbsp;<i class="fa-brands fa-bootstrap fs-5"></i>
+        </p>
+      </div>
+    </footer>
+
+    <!-- icons script -->
+    <script
+      src="https://kit.fontawesome.com/b15af52e57.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- my scripting -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
